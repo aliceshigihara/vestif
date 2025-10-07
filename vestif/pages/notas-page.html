@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de Notas</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        select, button { margin: 5px 0; padding: 5px; }
+        .detalhes { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Consulta de Notas de Corte</h1>
+
+    <label for="instituicao">Instituição:</label><br>
+    <select id="instituicao">
+        <option value="">Selecione a instituição</option>
+    </select><br>
+
+    <label for="campus">Campus:</label><br>
+    <select id="campus" disabled>
+        <option value="">Selecione o campus</option>
+    </select><br>
+
+    <label for="curso">Curso:</label><br>
+    <select id="curso" disabled>
+        <option value="">Selecione o curso</option>
+    </select><br>
+
+    <div class="detalhes" id="detalhes"></div>
+
+    <!-- Carregar os dados diretamente do arquivo dados.js -->
+
+    <script src="../srcs/dados.js"></script>
+    <script src="../scripts/data-script.js"></script>
+
+</body>
+</html>
