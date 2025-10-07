@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Exercícios - VestIF</title>
+  <link rel="icon" type="image/x-icon" href="/logo.webp" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: Arial, sans-serif; background-color:#3a9a45; color:white; text-align:center; min-height:100vh; padding:40px; }
+    button { margin-top:20px; padding:10px 20px; border:none; border-radius:8px; cursor:pointer; font-size:16px; }
+    .sub-btn { margin:5px; padding:8px 16px; cursor:pointer; border:none; border-radius:6px; }
+    .sub-page { display:none; margin-top:20px; }
+  </style>
+</head>
+<body>
+  <h1>Exercícios</h1>
+
+  <div>
+    <button class="sub-btn" data-target="matematica">Matemática</button>
+    <button class="sub-btn" data-target="portugues">Português</button>
+    <button class="sub-btn" data-target="fisica">Física</button>
+  </div>
+
+  <div id="matematica" class="sub-page">
+    <h2>Exercícios de Matemática</h2>
+    <p>Aqui entram questões e links de matemática.</p>
+  </div>
+  <div id="portugues" class="sub-page">
+    <h2>Exercícios de Português</h2>
+    <p>Aqui entram textos e interpretação.</p>
+  </div>
+  <div id="fisica" class="sub-page">
+    <h2>Exercícios de Física</h2>
+    <p>Aqui entram fórmulas e problemas práticos.</p>
+  </div>
+
+  <button onclick="location.href='index.html'">⬅ Voltar</button>
+
+  <script>
+    const subButtons = document.querySelectorAll(".sub-btn");
+    const subPages = document.querySelectorAll(".sub-page");
+
+    subButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = btn.dataset.target;
+        subPages.forEach(page => page.style.display = (page.id === target) ? "block" : "none");
+      });
+    });
+  </script>
+</body>
+</html>
