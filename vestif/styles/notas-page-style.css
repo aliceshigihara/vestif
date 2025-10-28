@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+select, button {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.detalhes {
+    margin-top: 20px;
+}   
