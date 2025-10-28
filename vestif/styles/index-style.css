@@ -19,19 +19,7 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* Tema escuro */
-    body.dark {
-      --bg: #1e1e1e;
-      --green: #4caf50;
-      --dark-green: #388e3c;
-      --accent-red: #f44336;
-      --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-      --glass: rgba(30, 30, 30, 0.85);
-      --text-color: #f5f5f5;
-      --text-light: #e0e0e0;
-      background-color: var(--bg);
-      color: var(--text-color);
-    }
+
 
     * {
       box-sizing: border-box;
@@ -43,7 +31,6 @@
       height: 100%;
     }
 
-    /* Top Bar */
     .topbar {
       background: linear-gradient(90deg, var(--green) 0 100%);
       background-image:
@@ -174,19 +161,6 @@
       flex-wrap: wrap;
     }
 
-    .conteudos {
-      width: 100%;
-      display: flex;
-      gap: 28px;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
-    .conteudos:hover {
-        transition: all 0.9 ease-in-out;
-    }
-
     .card {
       width: 220px;
       display: flex;
@@ -204,11 +178,6 @@
       color: inherit;
     }
 
-    body.dark .card {
-      background: #2f2f2f;
-      color: var(--text-light);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-    }
 
     .circle {
       line-height: 1;
@@ -228,11 +197,6 @@
       transition: background-color 0.3s;
     }
 
-    body.dark .circle {
-      background: linear-gradient(180deg, rgba(50, 50, 50, 0.8), rgba(70, 70, 70, 0.6));
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-
     .label {
       background: linear-gradient(180deg, #f6f6f6, #ffffff);
       padding: 8px 12px;
@@ -246,12 +210,6 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    body.dark .label {
-      background: #444;
-      border-color: #666;
-      color: var(--text-light);
-      box-shadow: none;
-    }
 
     .desc {
       color: #424242;
@@ -263,9 +221,6 @@
       transition: color 0.3s;
     }
 
-    body.dark .desc {
-      color: #ccc;
-    }
 
     footer {
       max-width: 1100px;
@@ -276,10 +231,6 @@
       text-align: center;
       transition: color 0.3s;
       user-select: none;
-    }
-
-    body.dark footer {
-      color: #aaa;
     }
 
     @media (max-width: 880px) {
