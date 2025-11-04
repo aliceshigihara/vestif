@@ -3,7 +3,7 @@ const campusSelect = document.getElementById('campus');
 const cursoSelect = document.getElementById('curso');
 const detalhesDiv = document.getElementById('detalhes');
 
-// Função para preencher <select>
+// preencher o select
 function preencherSelect(select, dados) {
   select.innerHTML = '<option value="">Selecione</option>';
   dados.forEach(item => {
@@ -15,36 +15,36 @@ function preencherSelect(select, dados) {
   select.disabled = false;
 }
 
-// 🔹 Obter lista de instituições
+// lista das instituicoes
 function getInstituicoes() {
   return dados.map(obj => Object.keys(obj)[0]);
 }
 
-// 🔹 Obter lista de campi de uma instituição
+// campi da instituicao referente
 function getCampi(instituicao) {
   const obj = dados.find(o => Object.keys(o)[0] === instituicao);
   if (!obj) return [];
   return Object.keys(obj[instituicao]);
 }
 
-// 🔹 Obter lista de cursos de uma instituição e campus
+// curso dos dois
 function getCursos(instituicao, campus) {
   const obj = dados.find(o => Object.keys(o)[0] === instituicao);
   if (!obj) return [];
   return obj[instituicao][campus].map(c => c.curso);
 }
 
-// 🔹 Obter detalhes de um curso específico
+// detalhes do curso
 function getDetalhes(instituicao, campus, curso) {
   const obj = dados.find(o => Object.keys(o)[0] === instituicao);
   if (!obj) return null;
   return obj[instituicao][campus].find(c => c.curso === curso);
 }
 
-// Inicializar instituições
+// inicializa a instituicao
 preencherSelect(instituicaoSelect, getInstituicoes());
 
-// Quando escolher instituição
+// momento em q escolhe a instituicao
 instituicaoSelect.addEventListener('change', () => {
   const instituicao = instituicaoSelect.value;
   campusSelect.disabled = true;
@@ -56,7 +56,7 @@ instituicaoSelect.addEventListener('change', () => {
   preencherSelect(campusSelect, getCampi(instituicao));
 });
 
-// Quando escolher campus
+// quando for escolher campus
 campusSelect.addEventListener('change', () => {
   const instituicao = instituicaoSelect.value;
   const campus = campusSelect.value;
@@ -68,7 +68,7 @@ campusSelect.addEventListener('change', () => {
   preencherSelect(cursoSelect, getCursos(instituicao, campus));
 });
 
-// Quando escolher curso
+// quando for escolher o curso
 cursoSelect.addEventListener('change', () => {
   const instituicao = instituicaoSelect.value;
   const campus = campusSelect.value;
@@ -79,6 +79,7 @@ cursoSelect.addEventListener('change', () => {
 
   const detalhe = getDetalhes(instituicao, campus, curso);
 
+  // mostra os detalhes com html
   if (detalhe) {
     detalhesDiv.innerHTML = `
       <h3>Detalhes do Curso:</h3>
