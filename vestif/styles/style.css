@@ -130,7 +130,9 @@ main.principal {
   background-color: var(--green);
   border-radius: 50%;
   margin: 0 auto 12px auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #notas-logo {
@@ -141,6 +143,12 @@ main.principal {
 }
 
 #exercicios-logo {
+  width: 70px;
+  height: 70px;
+  filter: invert(100%);
+}
+
+#conteudos-logo {
   width: 70px;
   height: 70px;
   filter: invert(100%);
