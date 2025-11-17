@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas de Corte</title>
+    <link rel="icon" type="image/png" href="https://ifc.edu.br/wp-content/plugins/ifc-funcionalidade/res/images/favicon.png" sizes="any">
+    <link href="../styles/notas-page-style.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="topbar" role="banner">
+        <header>
+            <div class="logo">
+                <img id="logo-mark" src="https://ifc.edu.br/wp-content/uploads/2019/03/logo_ifc.png">   
+            </div>
+            <button onclick="history.back()">Go Back</button>
+        </header>
+    </div>
+
+    <h1 id="title">Consulta de Notas de Corte</h1>    
+    <label for="instituicao">Instituição:</label><br>
+        <select id="instituicao">
+            <option value="">Selecione a instituição</option>
+        </select><br>
+    <label for="campus">Campus:</label><br>
+        <select id="campus" disabled>
+            <option value="">Selecione o campus</option>
+        </select><br>
+    <label for="curso">Curso:</label><br>
+        <select id="curso" disabled>
+            <option value="">Selecione o curso</option> 
+        </select><br>
+
+    <div class="detalhes" id="detalhes"></div>
+
+    <script src="../srcs/dados.js"></script>
+    <script src="../scripts/data-script.js"></script>
+
+</body>
+</html>
