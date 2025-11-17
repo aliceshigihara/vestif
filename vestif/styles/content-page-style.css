@@ -1,0 +1,184 @@
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #3a9a45;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow-y: auto;
+    }
+
+    .pagina {
+      background-color: #3a9a45;
+      border: 8px solid #2e7d33;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 1200px;
+      min-height: 100vh;
+      padding: 40px 0;
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .container-retangulos {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .retangulo {
+      background-color: white;
+      width: 100%;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo2 {
+      background-color: white;
+      width: 100%;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo3 {
+      background-color: white;
+      width: 100%;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo4 {
+      background-color: white;
+      width: 100%;
+      height: 650px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo5 {
+      background-color: white;
+      width: 100%;
+      height: 1750px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo6 {
+      background-color: white;
+      width: 100%;
+      height: 1000px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo7 {
+      background-color: white;
+      width: 100%;
+      height: 650px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo8 {
+      background-color: white;
+      width: 100%;
+      height: 1000px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 22px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      line-height: 1.4;
+    }
+
+    .retangulo strong {
+      font-weight: 700; /* negrito */
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .retangulo {
+        height: 250px;
+        font-size: 18px;
+      }
+    }

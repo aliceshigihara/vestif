@@ -122,6 +122,11 @@ main.principal {
   box-shadow: var(--card-shadow);
   padding: 20px;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-20px);
 }
 
 .circle {
