@@ -1,14 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <title>Bem-vindo ao VestIF!</title>
 </head>
 <body>
+  <header class="topbar" role="banner">
+  <div class="logo">
+    <img id="logo-mark" src="https://ifc.edu.br/wp-content/uploads/2019/03/logo_ifc.png">
+  </div>
+  <div class="top-actions">
+        {% if user.is_authenticated %}
+        <span>Olá, {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Sair</a>
+        {% else %}
+        <a href="{% url 'login' %}">Entrar</a>
+        <a href="{% url 'register' %}">Registrar</a>
+        {% endif %}
+    <a href="https://ifc.edu.br/" target="_blank" rel="noopener noreferrer">Site Oficial</a>  
+  </div>
+</header>
+
+  <h1 id="principal-title">
+    Boas-vindas ao Vestif!
+  </h1>
+  <h2>
+    O site gratuito, de estudante para estudante, que vai te ajudar rumo ao Vestibular Unificado!
+  </h2>
+
+  <p>Sente que ainda não está preparado para o vestibular? Este é o site perfeito para você.
+    Notas de corte, conteúdos que cairão e uma lista de exercícios prontinha para você se preparar!
+  </p>
   <div class="start-button">
-    <a href="pages/principal-page.html">
-      <button id="first-start-button"> Comece agora!</button>
+    {% if user.is_authenticated %}
+    <a href="{% url 'principal' %}">
+        <button>Você já faz parte, bora lá?!</button>
+    </a>
+    {% else %}
+    <a href="{% url 'login' %}">
+      <button id="first-start-button">Comece a construir a sua aprovação!</button>
+    {% endif %}
     </a>
   </div>
 </body>

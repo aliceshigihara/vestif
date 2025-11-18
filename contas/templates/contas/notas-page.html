@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas de Corte</title>
     <link rel="icon" type="image/png" href="https://ifc.edu.br/wp-content/plugins/ifc-funcionalidade/res/images/favicon.png" sizes="any">
-    <link href="../styles/notas-page-style.css" rel="stylesheet">
+    <link href="{% static 'css/notas-page-style.css' %}"" rel="stylesheet"/>
 
 </head>
 <body>
 
     <div class="topbar" role="banner">
+        {% if user.is_authenticated %}
+        <span>Olá, {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Sair</a>
+        {% else %}
+        <a href="{% url 'login' %}">Entrar</a>
+        <a href="{% url 'register' %}">Registrar</a>
+        {% endif %}
         <header>
             <div class="logo">
                 <img id="logo-mark" src="https://ifc.edu.br/wp-content/uploads/2019/03/logo_ifc.png">   

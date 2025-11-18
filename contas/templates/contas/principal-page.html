@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+  {% load static %}
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VestIF</title>
   <link rel="icon" type="image/png" href="https://ifc.edu.br/wp-content/plugins/ifc-funcionalidade/res/images/favicon.png" sizes="any">
-  <link href="../styles/principal-style.css" rel="stylesheet"/>
+  <link href="{% static 'css/principal-style.css' %}"" rel="stylesheet"/>
 
 </head>
 
@@ -13,11 +14,18 @@
 
 <header class="topbar" role="banner">
   <div class="logo">
-    <a href="../index.html">
+    <a href="{% url 'home' %}">
     <img id="logo-mark" src="https://ifc.edu.br/wp-content/uploads/2019/03/logo_ifc.png">
     </a>
   </div>
   <div class="top-actions"> 
+        {% if user.is_authenticated %}
+        <span>Olá, {{ user.username }}!</span>
+        <a href="{% url 'logout' %}">Sair</a>
+        {% else %}
+        <a href="{% url 'login' %}">Entrar</a>
+        <a href="{% url 'register' %}">Registrar</a>
+        {% endif %}
     <a href="https://ifc.edu.br/" target="_blank" rel="noopener noreferrer">Site Oficial</a>  
   </div>
 </header>
@@ -25,8 +33,10 @@
 <main class="principal" role="main">
   <h1 class="title">VESTIF</h1>
 
+<p>Olá, {{ user.username }}! Vamos estudar?</p>
+
   <div class="general">
-    <a href="notas-page.html" class="card" aria-labelledby="notacorte-label" role="region">
+    <a href="{% url 'notas' %}" class="card" aria-labelledby="notacorte-label" role="region">
         <div class="circle" aria-hidden="true">
             <img id="notas-logo" src="https://images.vexels.com/media/users/3/157346/isolated/preview/25829f6b8d6ca72aee817a8448ab7024-icone-de-livro-aberto.png">
         </div>

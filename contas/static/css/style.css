@@ -1,0 +1,117 @@
+/* ====== GLOBAL ====== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: #f6fdf8; /* verde super claro */
+    color: #222;
+    text-align: center;
+    padding-top: 100px;
+}
+
+/* ====== TOP BAR ====== */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #3a9a45; /* verde moderno */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.logo img {
+    height: 48px;
+}
+
+/* ====== AÇÕES DO TOPO ====== */
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.top-actions a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px; /* ARREDONDADO DO JEITO QUE VOCÊ PEDIU */
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.top-actions a:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+.top-actions span {
+    color: white;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* ====== TÍTULOS ====== */
+#principal-title {
+    font-size: 34px;
+    margin-top: 30px;
+    color: #1b7f4b;
+    font-weight: 700;
+}
+
+h2 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* ====== TEXTO ====== */
+p {
+    max-width: 600px;
+    margin: 20px auto 40px auto;
+    font-size: 16px;
+    color: #444;
+}
+
+/* ====== BOTÃO PRINCIPAL ====== */
+.start-button button {
+    padding: 14px 22px;
+    background: #27ae60;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 10px;
+}
+
+.start-button button:hover {
+    background: #1e8f50;
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 600px) {
+    #principal-title {
+        font-size: 28px;
+    }
+
+    .topbar {
+        height: 60px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .top-actions a {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
