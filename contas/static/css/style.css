@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@1,400&display=swap');
 
 body {
   position: relative;
@@ -42,12 +43,14 @@ body::before {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
+    margin-top: auto;
 }
 
 .logo img {
     height: 70px;
     width: auto;
-    margin-top: 20px;
+    margin-top: 23px;
+    user-select: none;
 }
 
 .top-actions {
@@ -59,7 +62,7 @@ body::before {
 }
 
 .top-actions span {
-    margin-top: 20px;
+    margin-top: 23px;
     color: white;
     background: none;
     border: none;
@@ -73,7 +76,7 @@ body::before {
 #historico {
     position: relative;
     display: inline-block;  
-    margin-top: 20px;
+    margin-top: 23px;
     color: white;
     background: none;
     border: none;
@@ -112,13 +115,14 @@ body::before {
     font-weight: 600;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.2s ease; 
-    margin-top: 20px;
+    margin-top: 23px;
 }
 
 .top-actions a:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    color:#0eeb1d;
+    color:#ffffff;
+    background: #a2ff00;
 
     cursor: pointer;
 }
@@ -128,13 +132,13 @@ body::before {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: -10px;
+    gap: -50px;
     position: absolute;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 0.4;
-    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .center-content {
@@ -142,16 +146,19 @@ body::before {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 40px;
-    gap: 20px;
+    margin-top: 20px;
+    gap: 10px;
 }
 
 
 .center-content h2 {
+    margin-top: -20px;
     max-width: 700px;
     line-height: 1.5;
     font-weight: 400;
-    color: #333;
+    color: #000000;
+    user-select: none;
+    text-align: center;
 }
 
 .start-button button {
@@ -177,17 +184,27 @@ body::before {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    letter-spacing: -1.2px;
-    font-size: 50px;
+    letter-spacing: -2.5px;
+    font-size: 60px;
+    transition: all 0.5s ease;
+    user-select: none;
+    margin-top: -2px;
+}
+
+#first-title:hover, #second-title:hover, #third-title:hover {
+        transform: translateY(-12px);
 }
 
 #third-title {
     color: #ffffff;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Libre Baskerville ', serif;
     font-style: italic;
-    letter-spacing: -1.2px;
+    letter-spacing: -2.5px;
     font-weight: 400;
-    font-size: 50px;
+    font-size: 60px;
+    user-select: none;
+    transition: all 0.5s ease;
+    margin-top: -2px;
 }
 @media (max-width: 600px) {
 

@@ -2,12 +2,28 @@ from django import forms
 from django.contrib.auth.models import User
 
 class RegisterForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Confirmar senha", widget=forms.PasswordInput)
+    password = forms.CharField(
+        label="Senha",
+        widget=forms.PasswordInput
+    )
+    password2 = forms.CharField(
+        label="Confirmar senha",
+        widget=forms.PasswordInput
+    )
 
     class Meta:
         model = User
-        fields = ["username", "email"]
+        fields = ["username", "email", "password"]
+
+        labels = {
+            'username': 'Nome de usuário',
+            'email': 'Email',
+        }
+
+        help_texts = {
+            'username': 'Escolha um nome de usuário curto e fácil de lembrar.',
+            'password': 'Sua senha deve ser segura.',
+        }
 
     def clean(self):
         cleaned_data = super().clean()

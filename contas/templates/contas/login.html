@@ -1,22 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <h2>Entrar</h2>
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        {% load static %}
+        <title>Vestif | Prepare-se para o vestibular!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="icon" type="image/png" href="https://ifc.edu.br/wp-content/plugins/ifc-funcionalidade/res/images/favicon.png" sizes="any">
 
-    {% if error %}
-        <p style="color:red">{{ error }}</p>
-    {% endif %}
+    </head>
+    <body>
+        <header class="topbar" role="banner">
+        <div class="logo">
+        <img id="logo-mark" src="https://ifc.edu.br/wp-content/uploads/2019/03/logo_ifc.png">
+        </div>
 
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Usuário" required><br>
-        <input type="password" name="password" placeholder="Senha" required><br>
-        <button type="submit">Entrar</button>
-    </form>
+        <div id="right-panel">
+        <div id="login-info">
+        <h1>Entrar</h1>
+        <h3>Bem-vindo de volta! Conecte-se para começar a estudar.</h3>
 
-    <p>Ainda não tem conta? <a href="{% url 'register' %}">Registrar</a></p>
-</body>
-</html>
+        {% if error %}
+            <p style="color:red">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Nome de Usuário:</label><br>
+            <input id="username" type="text" name="username" placeholder="" required><br><br>
+
+            <label for="password">Senha</label><br>
+            <input id="password" type="password" name="password" placeholder="" required><br><br>
+
+            <button id="enter-button" type="submit">Entrar</button>
+        </form>
+
+        <p>Ainda não tem conta? <a href="{% url 'register' %}">Registrar</a></p>
+        </div>
+        </div> 
+    </body>
+    </html>

@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registrar</title>
+    {% load static %}
+    <title>Vestif | Prepare-se para o vestibular!</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="icon" type="image/png" href="https://ifc.edu.br/wp-content/plugins/ifc-funcionalidade/res/images/favicon.png" sizes="any">
 </head>
 <body>
-    <h2>Registrar</h2>
+    <header class="topbar" role="banner">
+    <div class="logo">
+    <img id="logo-mark" src="https://ifc.edu.br/wp-content/uploads/2019/03/logo_ifc.png">
+    </div>
+    
+    <div id="right-panel">
+    <div id="login-info">
+    <h1>Registrar</h1>
+    <h2>Crie a sua conta e comece a estudar.</h2>
 
     <form method="POST">
         {% csrf_token %}
@@ -13,5 +24,7 @@
     </form>
 
     <p>Já possui conta? <a href="{% url 'login' %}">Entrar</a></p>
+    </div>
+    </div>
 </body>
 </html>

@@ -1,0 +1,128 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(
+        circle at left center,
+        rgb(251, 253, 245), 0%,
+        rgb(185, 236, 119) 20%,
+        rgb(92, 161, 1) 60%,
+        rgb(43, 91, 1) 80%,
+        rgb(10, 20, 0) 100%
+    );
+}
+
+#right-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: -6px 0 20px rgba(0,0,0,0.1);
+}
+
+#login-info {
+    position: absolute;
+    top: 20%;
+    bottom: 50%;
+    left: 30%;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.logo img {
+    width: 320px;
+    height: auto;
+    margin-top: 10px;
+    margin-left: 10px;  
+}
+
+label {
+    display: block;
+    margin-bottom: -10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    font-family: sans-serif;
+}
+
+input {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 15px;
+}
+
+#login-info input:focus {
+    border-color: #7ad701 !important;
+    box-shadow: 0 0 6px rgba(122, 215, 1, 0.45) !important;
+}
+
+#enter-button {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #7ad701;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#enter-button:hover {
+    background-color: #000000;
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+#enter-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+h1, h3 {
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+    user-select: none;
+}
+
+p a {
+    color: #7ad701;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+p a:hover {
+    color: #000;
+}
