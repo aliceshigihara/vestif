@@ -1,0 +1,76 @@
+{% load questoes_extras %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Simulador</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { font-size: 24px; margin-bottom: 20px; }
+    .questao { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 8px; background: #f9f9f9; }
+    .questao p { font-weight: bold; margin-bottom: 10px; }
+    .alts label { display: block; margin: 5px 0; }
+    button { padding: 10px 15px; font-size: 16px; cursor: pointer; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Simulador de Questões</h1>
+
+  <form id="quizForm">
+    {% csrf_token %}
+    {% for q in questoes %}
+      <div class="questao" data-numero="{{ q.numero }}">
+        <p>{{ q.numero }} {{ q.enunciado }}</p>
+        <div class="alts">
+          {% for code in codes %}
+            {% with field="alternativa_"|add:code %}
+              {% if q|get_attr:field %}
+                <label>
+                  <input type="checkbox"
+                         value="{{ code }}">
+                  [{{ code }}] {{ q|get_attr:field }}
+                </label>
+              {% endif %}
+            {% endwith %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <button type="submit">Enviar</button>
+  </form>
+
+<script>
+document.getElementById('quizForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const respostas = {};
+
+  document.querySelectorAll('.questao').forEach(qdiv => {
+    const numero = qdiv.getAttribute('data-numero');
+    const marcadas = Array.from(qdiv.querySelectorAll('input[type="checkbox"]:checked'))
+                          .map(chk => chk.value);
+    respostas[numero] = marcadas;
+  });
+
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  const resp = await fetch("{% url 'questoes:corrigir' %}", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken
+    },
+    body: JSON.stringify({ respostas })
+  });
+
+  if (resp.redirected) {
+    window.location.href = resp.url;
+  } else {
+    const txt = await resp.text();
+    console.log("Resposta sem redirecionamento:", txt);
+  }
+});
+</script>
+
+</body>
+</html>

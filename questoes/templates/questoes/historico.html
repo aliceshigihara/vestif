@@ -1,0 +1,9 @@
+
+<h2>Histórico de Simulados</h2>
+<ul>
+{% for t in tentativas %}
+  <li>{{ t.criado_em|date:"d/m/Y H:i" }} - {{ t.pontuacao }}/{{ t.total }}</li>
+{% empty %}
+  <li>Nenhuma tentativa registrada.</li>
+{% endfor %}
+</ul>

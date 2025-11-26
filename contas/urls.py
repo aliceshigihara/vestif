@@ -10,5 +10,4 @@ urlpatterns = [
     path('notas/', views.notas_view, name='notas'),
     path('conteudos/', views.conteudos_view, name='conteudos'),
     path('exercicios/', views.exercicios_view, name='exercicios'),
-
 ]

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado</title>
+</head>
+<body>
+  <h1>Resultado</h1>
+  <p>Sua pontuação foi:</p>
+
+<p>Você acertou <strong>{{ tentativa.pontuacao }}</strong> questões de {{ tentativa.qtd_questoes }}.</p>
+<p>Total existente no banco: {{ tentativa.total }}</p>
+
+  <a href="{% url 'questoes:simulado' %}">
+    <button>Voltar ao Simulador</button>
+  </a>
+</body>
+</html>
