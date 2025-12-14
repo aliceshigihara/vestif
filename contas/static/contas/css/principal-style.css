@@ -28,7 +28,6 @@ html, body {
   height: 100%;
 }
 
-/* ===== TOPBAR ===== */
 .topbar {
   background: linear-gradient(90deg, var(--green), var(--dark-green));
   padding: 10px 20px;

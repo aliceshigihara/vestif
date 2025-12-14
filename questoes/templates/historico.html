@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+{% block title %}Meu Histórico{% endblock %}
+
+{% block content %}
+
+<div class="container" style="max-width: 900px;">
+    <h2 class="mb-4 text-center">Minha Evolução </h2>
+
+    <div class="card shadow mb-5">
+        <div class="card-body">
+            <canvas id="graficoDesempenho" style="width: 100%; height: 400px;"></canvas>
+        </div>
+    </div>
+
+    <h3 class="mb-3">Detalhes das Tentativas</h3>
+    <div class="list-group">
+        {% for tentativa in tentativas %}
+            <a href="{% url 'questoes:correcao' tentativa.id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-1">{{ tentativa.prova.titulo }}</h5>
+                    <small class="text-muted">{{ tentativa.criado_em|date:"d/m/Y H:i" }}</small>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-primary rounded-pill" style="font-size: 1rem;">
+                        {{ tentativa.pontuacao|floatformat:1 }} / {{ tentativa.total }}
+                    </span>
+                    <br>
+                    <small>clique para ver</small>
+                </div>
+            </a>
+        {% empty %}
+            <div class="alert alert-info">
+                Você ainda não fez nenhum simulado. Vá estudar! 📚
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    const ctx = document.getElementById('graficoDesempenho').getContext('2d');
+    const labels = {{ grafico_datas | safe }};
+    const dataPoints = {{ grafico_notas | safe }};
+
+    new Chart(ctx, {
+        type: 'line', // Tipo do gráfico (linha)
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Minha Pontuação',
+                data: dataPoints,
+                borderColor: '#3a9a45', // Cor da linha (Verde do seu tema)
+                backgroundColor: 'rgba(58, 154, 69, 0.2)', // Fundo transparente
+                borderWidth: 3,
+                pointBackgroundColor: '#ffffff',
+                pointBorderColor: '#3a9a45',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                fill: true, // Preenche embaixo da linha
+                tension: 0.4 // Deixa a linha curva (mais bonito) ou 0 para reta
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    labels: { font: { size: 14 } }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Pontos'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}
+
+</body>
+</html>

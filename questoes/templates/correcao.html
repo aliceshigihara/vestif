@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block title %}Resultado do Simulado{% endblock %}
+
+{% block content %}
+
+<div class="container" style="max-width: 800px; margin-top: 40px;">
+    
+    <div class="card text-center mb-4 shadow">
+        <div class="card-header bg-primary text-white">
+            <h3>Resultado Final</h3>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Sua Pontuação</h5>
+            
+            <h1 class="display-1 text-primary">{{ tentativa.pontuacao|floatformat:2 }}</h1>
+            
+            <p class="card-text">
+                De um total de <strong>{{ tentativa.total }}</strong> questões.
+            </p>
+            
+            <hr>
+            
+            <a href="{% url 'questoes:menu_simulado' %}" class="btn btn-outline-primary">
+                Voltar ao Menu
+            </a>
+            <a href="{% url 'questoes:iniciar_simulado' %}?prova_id={{ tentativa.prova.id }}" class="btn btn-primary">
+                Tentar Novamente
+            </a>
+        </div>
+        <div class="card-footer text-muted">
+            Realizado em {{ tentativa.criado_em|date:"d/m/Y H:i" }}
+        </div>
+    </div>
+
+    <h3 class="mb-3">Detalhamento</h3>
+    
+    {% for resp in respostas %}
+    <div class="card mb-3 {% if resp.acertou_totalmente %}border-success{% else %}border-danger{% endif %}" 
+         style="border-width: 2px;">
+        
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <strong>Questão {{ resp.questao.numero }} - {{ resp.questao.disciplina }}</strong>
+            {% if resp.acertou_totalmente %}
+                <span class="badge bg-success">Acertou ({{ resp.pontos_obtidos }} pts)</span>
+            {% else %}
+                <span class="badge bg-danger">Errou ({{ resp.pontos_obtidos }} pts)</span>
+            {% endif %}
+        </div>
+        
+        <div class="card-body">
+            <p class="card-text">{{ resp.questao.enunciado|truncatewords:30 }}</p>
+            
+            <div class="alert alert-light">
+                <strong>Sua resposta:</strong> {{ resp.resposta_marcada }} <br>
+                <strong>Gabarito Oficial:</strong> {{ resp.questao.resposta }}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p>Nenhum detalhe de resposta encontrado.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+</body>
+</html>

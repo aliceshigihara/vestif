@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notas de Corte</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<h1>Notas de Corte 2024</h1>
+
+<div>
+    <a href="?inst=">Todas</a> |
+    <a href="?inst=UFSC">UFSC</a> |
+    <a href="?inst=IFSC">IFSC</a> |
+    <a href="?inst=IFC">IFC</a>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Instituição</th>
+            <th>Cidade</th>
+            <th>Curso</th>
+            <th>Turno</th>
+            <th>Nota de Corte</th>
+            <th>Vagas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for nota in notas %}
+        <tr>
+            <td>{{ nota.instituicao }}</td>
+            <td>{{ nota.cidade }}</td>
+            <td>{{ nota.curso }}</td>
+            <td>{{ nota.turno }}</td>
+            <td><strong>{{ nota.nota_corte }}</strong></td>
+            <td>{{ nota.vagas|floatformat:0 }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">Nenhuma nota encontrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

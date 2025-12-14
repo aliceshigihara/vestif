@@ -36,7 +36,7 @@
 <p>Olá, {{ user.username }}! Vamos estudar?</p>
 
   <div class="general">
-    <a href="{% url 'notas' %}" class="card" aria-labelledby="notacorte-label" role="region">
+    <a href="{% url 'notas-de-corte' %}" class="card" aria-labelledby="notacorte-label" role="region">
         <div class="circle" aria-hidden="true">
             <img id="notas-logo" src="https://images.vexels.com/media/users/3/157346/isolated/preview/25829f6b8d6ca72aee817a8448ab7024-icone-de-livro-aberto.png">
         </div>
@@ -44,7 +44,7 @@
         <p class="desc">Consulte a nota de corte e informações sobre o seu curso de escolha.</p>
     </a>
 
-    <a href="{% url 'questoes:simulado' %}" class="card" arial-labelledby="simuladorpage-label" role="region">
+    <a href="{% url 'questoes:menu_simulado' %}" class="card" arial-labelledby="simuladorpage-label" role="region">
         <div class="circle" aria-hidden="true">
             <img id="exercicios-logo" src="https://icons.veryicon.com/png/o/internet--web/aeps/pen-47.png">
         </div>
@@ -52,7 +52,7 @@
         <p class="desc">Pratique com exercícios selecionados e resoluções comentadas.</p>
     </a>
 
-    <a href="content-page.html" class="card" arial-labelledby="contentpage-label" role="region">
+    <a href="{% url 'conteudos' %}" class="card" arial-labelledby="contentpage-label" role="region">
         <div class="circle" aria-hidden="true">
             <img id="conteudos-logo" src="https://www.nicepng.com/png/full/188-1885374_stack-of-paper-outline-vector-stack-of-papers.png">
         </div>

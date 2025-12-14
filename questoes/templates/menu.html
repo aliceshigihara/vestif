@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de questẽos</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Simulados Disponíveis</h2>
+
+    <div class="lista-provas">
+        {% for prova in provas %}
+            <div class="card p-3 mb-3 shadow-sm">
+                <h3>{{ prova.titulo }} - {{ prova.ano }}</h3>
+                
+                <a href="{% url 'questoes:iniciar_simulado' %}?prova_id={{ prova.id }}" class="btn btn-primary mb-2">
+                    Fazer Prova Completa
+                </a>
+
+                <hr>
+                <p><small>Ou filtre por matéria:</small></p>
+                
+                <div class="d-flex flex-wrap gap-2">
+                    {% for disciplina in disciplinas %}
+                        {% if disciplina %} <a href="{% url 'questoes:iniciar_simulado' %}?prova_id={{ prova.id }}&disciplina={{ disciplina }}" 
+                               class="btn btn-outline-secondary btn-sm">
+                               {{ disciplina }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% empty %}
+            <p>Nenhuma prova cadastrada.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+</div>
+</body>
+</html>

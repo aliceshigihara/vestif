@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulado - VestIF</title>
+  <link rel="icon" type="image/x-icon" href="/logo.webp" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+
+{% block title %}Simulado - {{ prova.titulo }}{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Seus estilos personalizados */
+    .header-simulado {
+        background-color: #3a9a45;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .questao-card {
+        background: white;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        border-left: 5px solid #3a9a45;
+    }
+
+    .badge-disciplina {
+        background-color: #3a9a45;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .alternativa-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .alternativa-item:hover {
+        background-color: #e8f5e9;
+    }
+
+    .btn-enviar {
+        background-color: #3a9a45;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        display: block;
+        margin: 40px auto;
+    }
+</style>
+
+<div class="header-simulado">
+    <h1 style="font-family: 'Permanent Marker', cursive;">{{ prova.titulo }} - {{ prova.ano }}</h1>
+    <p>Disciplina: <strong>{{ disciplina_atual }}</strong> | Questões: <strong>{{ questoes|length }}</strong></p>
+</div>
+
+<form id="simuladoForm">
+    {% csrf_token %}
+    
+    {% for questao in questoes %}
+    <div class="questao-card" id="q-{{ questao.numero }}">
+        
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+            <h3>Questão {{ questao.numero }}</h3>
+            <span class="badge-disciplina">{{ questao.disciplina }}</span>
+        </div>
+
+        <div style="white-space: pre-wrap; font-size: 1.1rem; line-height: 1.6;">{{ questao.enunciado }}</div>
+
+        <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+            {% for codigo, texto in questao.alternativas_dict.items %}
+                <label class="alternativa-item">
+                    <input type="checkbox" name="resposta_{{ questao.numero }}" value="{{ codigo }}">
+                    <div><strong>{{ codigo }}.</strong> {{ texto }}</div>
+                </label>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <button type="button" class="btn-enviar" onclick="enviarSimulado()">Finalizar e Corrigir</button>
+</form>
+
+<script>
+    function enviarSimulado() {
+        const form = document.getElementById('simuladoForm');
+        const formData = new FormData(form);
+        const respostas = {};
+
+        for (let pair of formData.entries()) {
+            const nomeInput = pair[0];
+            const valor = pair[1];
+
+            if (nomeInput.startsWith('resposta_')) {
+                const numeroQuestao = nomeInput.replace('resposta_', '');
+                if (!respostas[numeroQuestao]) { respostas[numeroQuestao] = []; }
+                respostas[numeroQuestao].push(valor);
+            }
+        }
+
+        const urlCorrecao = "{% url 'questoes:corrigir_simulado' prova.id %}";
+
+        fetch(urlCorrecao, {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ 
+                respostas: respostas,
+                disciplina: "{{ disciplina_atual }}" 
+            })
+        })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            } else {
+                return response.text().then(text => alert("Erro: " + text));
+            }
+        })
+        .catch(error => console.error('Erro:', error));
+    }
+</script>
+
+{% endblock %}
+</body>
+</html>

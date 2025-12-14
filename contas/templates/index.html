@@ -18,7 +18,7 @@
 
     <div class="top-actions">
       {% if user.is_authenticated %}
-      <a id="historico"> Ver sua evolução </a>
+      <a class="nav-link" href="{% url 'questoes:historico' %}"id="historico"> Ver sua evolução </a>
       <span>|</span>
       <span>Olá, {{ user.username }}!</span>
       <a href="{% url 'logout' %}">Sair</a>
